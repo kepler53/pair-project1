@@ -23,10 +23,11 @@ public class APTRentSAXHandler extends DefaultHandler {
 	}
 	public void startElement(String uri, String localName
 			                           , String qName, Attributes att ){
+		//4번
 		if(qName.equals("item")){
-			// complete code #04
-			// APTDealSAXHandler Class 를 참조하여, 아파트 전월세 거래 정보에 맞도록 코드를 추가하세요.
-
+			house = new HouseDeal(HouseSaxParser.no++);
+			house.setType(HouseDeal.APT_RENT); // HouseDeal에 처음 변수 중 4개에 나와있음
+			houses.add(house);
 		}
 	}
 	public void endElement(String uri, String localName, String qName){
@@ -37,27 +38,25 @@ public class APTRentSAXHandler extends DefaultHandler {
 		}else if(qName.equals("법정동")) { 
 			house.setDong(temp.trim());
 		}else if(qName.equals("보증금액")) { 
-			// complete code #05
-			// 보증금액 항목을 처리하세요.
+			house.setDealAmount(temp); // 유사하다고 생각하는 단어
 		}else if(qName.equals("월세금액")) { 
 			house.setRentMoney(temp);
 		}else if(qName.equals("건축년도")) { 
-			// complete code #06
-			// 건축년도 항목을 처리하세요.
+			house.setBuildYear(Integer.parseInt(temp));
 		}else if(qName.equals("년")) { 
 			house.setDealYear(Integer.parseInt(temp));
 		}else if(qName.equals("월")) { 
 			house.setDealMonth(Integer.parseInt(temp));
 		}else if(qName.equals("일")) { 
-			// complete code #07;
-			// 일 항목을 처리하세요.
+			house.setDealDay(Integer.parseInt(temp));
 		}else if(qName.equals("전용면적")) { 
 			house.setArea(Double.parseDouble(temp));
 		}else if(qName.equals("지번")) { 
 			house.setJibun(temp);
 		}else if(qName.equals("층")) { 
 			house.setFloor(Integer.parseInt(temp));
-		}
+		};
+		
 	}
 	public void characters(char[]ch, int start, int length){
 		temp = new String(ch, start, length);

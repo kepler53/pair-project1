@@ -30,7 +30,7 @@ public class APTDealSAXHandler extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName, Attributes att){
 		if(qName.equals("item")){
 			house = new HouseDeal(HouseSaxParser.no++);
-			house.setType(HouseDeal.APT_DEAL);
+			house.setType(HouseDeal.APT_DEAL); // HouseDeal에 처음 변수 중 4개에 나와있음
 			houses.add(house);
 		}
 	}

@@ -75,11 +75,14 @@ public class HouseDaoImpl implements HouseDao{
 	 * @param no	검색할 아파트 식별 번호
 	 * @return		아파트 식별 번호에 해당하는 아파트 거래 정보를 찾아서 리턴한다, 없으면 null이 리턴됨
 	 */
-	public HouseDeal search(int no) {
-		// complete code #03
-		// List<HouseDeal> search 로부터 no 에 해당하는 HouseDeal 정보를 검색하여 return 하도록 코드를 작성하세요.
-		// 해당하는 no 가 없을 경우 null 을 리턴하세요.
-		return null;
+	//주석02번 문제
+	public HouseDeal search(int no) {		
+		HouseDeal houseDeal = new HouseDeal();
+		for (int i = 0; i < search.size(); i++) {
+			if(no==search.get(i).getNo())
+				houseDeal = search.get(i);
+		}
+		return houseDeal;
 	}
 	
 //	public static void main(String[] args) {
