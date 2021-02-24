@@ -1,13 +1,16 @@
 package com.ssafy.happyhouse.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.ssafy.happyhouse.model.dto.Env;
 import com.ssafy.happyhouse.model.dto.HouseDeal;
 import com.ssafy.happyhouse.model.dto.HouseInfo;
 import com.ssafy.happyhouse.model.dto.HousePageBean;
+import com.ssafy.happyhouse.util.EnvSaxParser;
 import com.ssafy.happyhouse.util.HouseSaxParser;
 
 public class HouseDaoImpl implements HouseDao{
@@ -17,6 +20,8 @@ public class HouseDaoImpl implements HouseDao{
 	private int size;
 	private List<HouseDeal> search;
 	private String[] searchType= {HouseDeal.APT_DEAL, HouseDeal.APT_RENT, HouseDeal.HOUSE_DEAL, HouseDeal.HOUSE_RENT};
+	private List<Env> envList;
+	private HashMap<String, Integer> envMap;
 	public HouseDaoImpl() {
 		loadData();
 	}
@@ -30,6 +35,9 @@ public class HouseDaoImpl implements HouseDao{
 		deals = parser.getDeals();
 		size = parser.getSize();
 		search = new ArrayList<HouseDeal>(size);
+		EnvSaxParser parser2 = new EnvSaxParser();
+		envList = parser2.getEnvList();
+		envMap = parser2.getEnvMap();
 	}
 	
 	/**
@@ -59,6 +67,31 @@ public class HouseDaoImpl implements HouseDao{
 			if(houseInfo.get(key)!=null) 
 				search.get(i).setImg(houseInfo.get(key).getImg());
 		}
+		
+		//////////////////////////////////////////////
+	//	for(int i=0; i<search.size(); i++) {
+	//		String dong = search.get(i).getDong();
+	//		int cnt = 0;
+	//		for(int j=0; j<envList.size(); j++) {
+	//			if(envList.get(i).getAddress().contains(dong))
+	//				cnt++;
+	//		}
+	//		search.get(i).setEnvCnt(cnt);
+	//	}
+		//////////////////////////////////////////////////
+		
+		//////////////////////////////////////////////
+		for(int i=0; i<search.size(); i++) {
+			String dong = search.get(i).getDong();
+			if(envMap.get(dong) != null) {
+				search.get(i).setEnvCnt(envMap.get(dong));
+			}
+			else
+				search.get(i).setEnvCnt(0);
+			System.out.println("폐수 개수 "+envMap.get(dong));
+		}
+		//////////////////////////////////////////////////
+
 		
 		System.out.println(search);
 		

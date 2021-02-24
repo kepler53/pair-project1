@@ -30,6 +30,9 @@ public class HouseDeal {
 	/**층*/
 	private int floor;
 	/**지번*/
+	/*폐수시설 개수**/
+	private int envCnt;
+	
 	/** */
 	private String lat;
 	private String lng;
@@ -156,6 +159,14 @@ public class HouseDeal {
 	}
 	public void setLng(String lng) {
 		this.lng = lng;
+	}
+	
+	public int getEnvCnt() {
+		return envCnt;
+	}
+	
+	public void setEnvCnt(int cnt) {
+		this.envCnt = cnt;
 	}
 
 	@Override

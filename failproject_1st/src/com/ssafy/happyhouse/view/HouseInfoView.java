@@ -96,7 +96,7 @@ public class HouseInfoView{
 											));
 		houseInfoL[8].setText(curHouse.getDong());
 		houseInfoL[9].setText(curHouse.getJibun());
-		
+//		houseInfoL[10].setText(curHouse.getEnvCnt());   /////////////////////////
 		//System.out.println("###############" + curHouse.getImg());
 		System.out.println(curHouse.toString());
 		ImageIcon icon = null;
