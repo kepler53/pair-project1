@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -291,6 +292,8 @@ public class HouseInfoView{
 		}
 		
 		List<HouseDeal> deals = houseService.searchAll(bean);
+		/////번호순 정렬 타이밍////////
+		Collections.sort(deals);
 		if(deals!=null){
 			int i=0;
 			String[][]data = new String[deals.size()][5];

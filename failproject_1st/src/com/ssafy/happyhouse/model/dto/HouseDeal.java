@@ -1,6 +1,6 @@
 package com.ssafy.happyhouse.model.dto;
 
-public class HouseDeal {
+public class HouseDeal implements Comparable<HouseDeal>{
 
 	public static String  APT_DEAL = "아파트 매매";
 	public static String  APT_RENT = "아파트 전월세";
@@ -175,6 +175,10 @@ public class HouseDeal {
 				+ dealAmount + ", buildYear=" + buildYear + ", dealYear=" + dealYear + ", dealMonth=" + dealMonth
 				+ ", dealDay=" + dealDay + ", area=" + area + ", floor=" + floor + ", lat=" + lat + ", lng=" + lng
 				+ ", jibun=" + jibun + ", type=" + type + ", rentMoney=" + rentMoney + ", img=" + img + "]";
+	}
+	@Override
+	public int compareTo(HouseDeal o) {
+		return this.no - o.no;
 	}
 	
 }
