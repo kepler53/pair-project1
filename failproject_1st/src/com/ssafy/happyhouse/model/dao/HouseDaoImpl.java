@@ -53,7 +53,6 @@ public class HouseDaoImpl implements HouseDao{
 	public List<HouseDeal> searchAll(HousePageBean  bean){
 		search.clear();
 		List<HouseDeal> finds = new LinkedList<HouseDeal>();
-		
 		boolean[] type = bean.getSearchType();
 		for (int i = 0, size=type.length; i < size; i++) {
 			if(type[i]) {

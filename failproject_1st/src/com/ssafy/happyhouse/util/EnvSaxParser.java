@@ -47,6 +47,7 @@ public class EnvSaxParser {
 						int val = envMap.get(dong);
 						envMap.put(dong, val+1);
 					}
+					break;
 				}
 				cnt++;
 			}

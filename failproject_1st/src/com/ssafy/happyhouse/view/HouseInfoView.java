@@ -15,6 +15,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -82,10 +83,13 @@ public class HouseInfoView{
 		houseInfoL[2].setText(curHouse.getAptName());
 		houseInfoL[3].setText(""+curHouse.getDealAmount());
 		String rent = curHouse.getRentMoney();
-		if(rent == null) {
+		if(rent == null) { //매매
 			houseInfoL[4].setText("없음");
-		}else {
-			houseInfoL[4].setText(curHouse.getRentMoney());
+		}else { //전월세
+			if(rent.equals(" 0"))
+				houseInfoL[4].setText("전세 계약");
+			else
+				houseInfoL[4].setText(curHouse.getRentMoney());
 		}
 		houseInfoL[5].setText(""+curHouse.getBuildYear());
 		houseInfoL[6].setText(curHouse.getArea()+"");
@@ -268,7 +272,7 @@ public class HouseInfoView{
 		word = wordTf.getText().trim();
 		key = choice[findC.getSelectedIndex()];
 		System.out.println("word:"+word+" key:"+key);
-		showHouses();		
+		showHouses();
 	}
 	/**
 	 * 주택 목록을  갱신하기 위한 메서드 
@@ -299,6 +303,8 @@ public class HouseInfoView{
 			}
 			houseModel.setDataVector(data, title);
 		}
+		if(deals.size() == 0)
+			JOptionPane.showMessageDialog(null,"검색 결과가 없습니다.");
 	}
 //	public static void main(String[] args) {
 //		new HouseInfoView();
