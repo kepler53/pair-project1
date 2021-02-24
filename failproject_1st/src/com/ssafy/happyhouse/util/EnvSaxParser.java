@@ -38,7 +38,6 @@ public class EnvSaxParser {
 			int cnt = 0;
 			while(st.hasMoreTokens()) {
 				String dong = st.nextToken();
-				System.out.println(cnt+ dong);
 				if(cnt == 2) { //동 메핑
 					if(!envMap.containsKey(dong))
 						envMap.put(dong, 1);

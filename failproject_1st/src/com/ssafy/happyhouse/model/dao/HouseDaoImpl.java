@@ -87,7 +87,7 @@ public class HouseDaoImpl implements HouseDao{
 			}
 			else
 				search.get(i).setEnvCnt(0);
-			System.out.println("폐수 개수 "+envMap.get(dong));
+//			System.out.println("폐수 개수 "+envMap.get(dong));
 		}
 		//////////////////////////////////////////////////
 
@@ -143,6 +143,7 @@ public class HouseDaoImpl implements HouseDao{
 				houseDeal = search.get(i);
 				}
 		}
+		System.out.println("근처 폐수 방류 지역"+houseDeal.getEnvCnt()+"개");
 		return houseDeal;
 	}
 	

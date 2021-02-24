@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +22,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import com.ssafy.happyhouse.HappyHouseException;
 import com.ssafy.happyhouse.model.dto.HouseDeal;
@@ -225,6 +232,8 @@ public class HouseInfoView{
 		mainP.setBorder(BorderFactory.createEmptyBorder(20 , 10 , 10 , 10));
 		frame.add(mainP,"Center");
 		
+		
+		
 		/*이벤트 연결*/
 
 		houseTable.addMouseListener( new MouseAdapter() {
@@ -238,6 +247,7 @@ public class HouseInfoView{
 			}
 		});
 		
+
 		// complete code #01
 		// 아래의 코드를 참조하여 아래 라인을 uncomment 하고 searchBt.addActionList() 를 Lambda 표현식으로 바꾸세요.
 		 searchBt.addActionListener((e) ->{
