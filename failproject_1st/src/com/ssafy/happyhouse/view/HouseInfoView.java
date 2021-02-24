@@ -73,8 +73,8 @@ public class HouseInfoView{
 	
 	private void showHouseInfo(int code) {
 		
-		curHouse = houseService.search(code);
-		System.out.println("???"+curHouse);
+		curHouse = houseService.search(code); 
+		System.out.println(curHouse);
 		
 		//foodInfoL[0].setText(""+curfood.getCode());
 		houseInfoL[0].setText("");
@@ -98,10 +98,12 @@ public class HouseInfoView{
 		houseInfoL[9].setText(curHouse.getJibun());
 		
 		//System.out.println("###############" + curHouse.getImg());
-		
+		System.out.println(curHouse.toString());
 		ImageIcon icon = null;
+		//여기서 왜 읽어오질 못하지 다른 부분들은 다 읽어왔으면서 curHouse의 경우는 읽어오는 데 getImg만 못하는 게 말이 되나
 		if( curHouse.getImg() != null && curHouse.getImg().trim().length() != 0) {
-			icon = new ImageIcon("img/" + curHouse.getImg());
+			icon = new ImageIcon("img/" +curHouse.getImg()); //curHouse.getImg가 아니라 houseinfo.getimg를 해야함
+			
 			System.out.println("#####" + icon.toString() + "####");
 		}else {
 			icon = new ImageIcon("img/다세대주택.jpg");

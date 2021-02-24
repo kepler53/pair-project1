@@ -18,7 +18,9 @@ public class HouseInfo {
 	private String lng;
 	
 	/**이미지 경로*/
-	protected String img;
+	private String img;
+	
+	
 	public HouseInfo() {}
 	public HouseInfo(int no) {
 		super();

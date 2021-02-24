@@ -37,6 +37,11 @@ public class HouseDaoImpl implements HouseDao{
 	 * @param bean  검색 조건과 검색 단어가 있는 객체
 	 * @return 조회한 주택 목록
 	 */
+	
+//	private Map<String, HouseInfo> houseInfo;
+//	private Map<String, List<HouseDeal>> deals;
+//	private int size;
+//	private List<HouseDeal> search;
 	public List<HouseDeal> searchAll(HousePageBean  bean){
 		search.clear();
 		List<HouseDeal> finds = new LinkedList<HouseDeal>();
@@ -48,7 +53,14 @@ public class HouseDaoImpl implements HouseDao{
 				search.addAll(deals.get(searchType[i]));
 			}
 		}
-		System.out.println("!!"+search);
+		
+		for(int i=0; i<search.size(); i++) {
+			String key = search.get(i).getDong()+search.get(i).getAptName();
+			if(houseInfo.get(key)!=null)
+				search.get(i).setImg(houseInfo.get(key).getImg());
+		}
+		System.out.println(search);
+		
 		String dong = bean.getDong();
 		String aptName = bean.getAptname();
 		String keyword = bean.getKeyword();
@@ -83,11 +95,20 @@ public class HouseDaoImpl implements HouseDao{
 	 * @return		아파트 식별 번호에 해당하는 아파트 거래 정보를 찾아서 리턴한다, 없으면 null이 리턴됨
 	 */
 	//주석02번 문제
-	public HouseDeal search(int no) {		
+	
+//	private Map<String, HouseInfo> houseInfo;
+//	private Map<String, List<HouseDeal>> deals;
+//	private int size;
+//	private List<HouseDeal> search;
+	
+	//null값을 넘기는 거 
+	
+	public HouseDeal search(int no) { 
 		HouseDeal houseDeal = new HouseDeal();
 		for (int i = 0; i < search.size(); i++) {
-			if(no==search.get(i).getNo())
+			if(no==search.get(i).getNo()) {
 				houseDeal = search.get(i);
+				}
 		}
 		return houseDeal;
 	}
