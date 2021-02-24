@@ -56,9 +56,10 @@ public class HouseDaoImpl implements HouseDao{
 		
 		for(int i=0; i<search.size(); i++) {
 			String key = search.get(i).getDong()+search.get(i).getAptName();
-			if(houseInfo.get(key)!=null)
+			if(houseInfo.get(key)!=null) 
 				search.get(i).setImg(houseInfo.get(key).getImg());
 		}
+		
 		System.out.println(search);
 		
 		String dong = bean.getDong();
