@@ -14,6 +14,14 @@ public class HousePageBean {
 	
 	private String  dong;
 	private String  aptName;
+	private String  keyword;
+	
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
 	
 	public String getDong() {
 		return dong;

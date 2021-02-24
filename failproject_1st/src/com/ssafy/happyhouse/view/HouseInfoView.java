@@ -74,7 +74,7 @@ public class HouseInfoView{
 	private void showHouseInfo(int code) {
 		
 		curHouse = houseService.search(code);
-		System.out.println(curHouse);
+		System.out.println("???"+curHouse);
 		
 		//foodInfoL[0].setText(""+curfood.getCode());
 		houseInfoL[0].setText("");
@@ -279,6 +279,8 @@ public class HouseInfoView{
 				bean.setDong(word);
 			}else if(key.equals("name")) {
 				bean.setAptname(word);
+			}else {
+				bean.setKeyword(word);
 			}
 		}
 		

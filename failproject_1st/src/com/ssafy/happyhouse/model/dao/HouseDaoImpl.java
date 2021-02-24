@@ -48,9 +48,10 @@ public class HouseDaoImpl implements HouseDao{
 				search.addAll(deals.get(searchType[i]));
 			}
 		}
-		System.out.println(search);
+		System.out.println("!!"+search);
 		String dong = bean.getDong();
 		String aptName = bean.getAptname();
+		String keyword = bean.getKeyword();
 		if(dong!=null) {	
 			for (HouseDeal deal : search) {
 				if(deal.getDong().contains(dong)) {
@@ -63,8 +64,14 @@ public class HouseDaoImpl implements HouseDao{
 					finds.add(deal);
 				}
 			}
+		}else if(keyword != null){
+			for (HouseDeal deal : search) {
+				if(deal.getAptName().contains(keyword)) {
+					finds.add(deal);
+				}
+			}
 		}else {
-			finds = search;
+		finds = search;
 		}
 		return finds;
 	}
